@@ -2,7 +2,11 @@
 
 interface LogInterface
 {
-    function err($message);
+    // maybe add some constants for priorities?
+    function log($message, $priority = null);
+
+    // maybe leave out the following methods?
+    function error($message);
 
     function warn($message);
 
