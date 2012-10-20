@@ -5,10 +5,12 @@ interface CacheInterface
     /**
      * Get data from the cache.
      *
-     * @param string $key
-     * @return string Stored data. FALSE if the key has no data.
+     * @param string $key Cache key
+     * @param bool $success Set to TRUE if data was sucessfully retrieved,
+     *                      FALSE if not data was found for the provided cache key
+     * @return string Stored data.
      */
-    function retrieve($key);
+    function retrieve($key, &$success = null);
 
     /**
      * Checks if the cache has data associated to a key.
@@ -21,8 +23,8 @@ interface CacheInterface
     /**
      * Set data for a key in cache.
      * 
-     * @param string $key
-     * @param string $data
+     * @param string $key Cache key
+     * @param string $data Data, non string data must first be encoded
      * @param int $ttl Time to live in minutes
      * @return bool TRUE if data successfully stored. FALSE in case of error.
      */
@@ -31,7 +33,7 @@ interface CacheInterface
     /**
      * Drop data associated to a key.
      * 
-     * @param string $key
+     * @param string $key Cache key
      * @return bool TRUE if data successfully removed. FALSE in case of error.
      */
     function remove($key);
