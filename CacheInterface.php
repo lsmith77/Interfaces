@@ -25,7 +25,7 @@ interface CacheInterface
      * 
      * @param string $key Cache key
      * @param string $data Data, non string data must first be encoded
-     * @param int $ttl Time to live in minutes
+     * @param int $ttl Time to live in seconds, values <= 0 disable TTL
      * @return bool TRUE if data successfully stored. FALSE in case of error.
      */
     function store($key, $data, $TTL = 0);
